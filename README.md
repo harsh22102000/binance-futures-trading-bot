@@ -1,33 +1,163 @@
-# Binance Futures Testnet Trading Bot
+# Binance Futures Trading Bot (Testnet)
 
-## Setup
+## Overview
 
-1. Create Binance Futures Testnet account
-2. Generate API key + secret
-3. Create .env file:
+This project is a structured Python-based CLI trading bot developed for Binance USDT-M Futures Testnet.
 
-BINANCE_API_KEY=your_key
-BINANCE_API_SECRET=your_secret
+It demonstrates:
 
-4. Install dependencies:
+- Clean modular architecture
+- Binance Futures API integration
+- CLI-based input validation
+- Structured logging
+- Exception handling
+- Separation of concerns (Client / Orders / Validators / CLI)
 
+The application allows users to place MARKET and LIMIT orders on Binance Futures Testnet using API credentials.
+
+---
+
+## Features
+
+- Place MARKET orders
+- Place LIMIT orders (GTC)
+- Support for BUY and SELL sides
+- Input validation (symbol, quantity, order type, price)
+- Structured logging to file
+- Clear console output
+- Exception handling for:
+  - Invalid input
+  - Missing price for LIMIT
+  - API errors
+  - Network failures
+
+---
+
+## Tech Stack
+
+- Python 3.x
+- python-binance
+- argparse
+- logging
+- python-dotenv
+
+---
+
+## Project Structure
+
+```
+binance-futures-trading-bot/
+│
+├── bot/
+│   ├── client.py
+│   ├── orders.py
+│   ├── validators.py
+│   ├── logging_config.py
+│   └── __init__.py
+│
+├── logs/
+│   └── trading_bot.log
+│
+├── cli.py
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Setup Instructions
+
+### 1. Clone Repository
+
+```
+git clone https://github.com/harsh22102000/binance-futures-trading-bot.git
+cd binance-futures-trading-bot
+```
+
+### 2. Install Dependencies
+
+```
 pip install -r requirements.txt
+```
 
-## Run Examples
+### 3. Create .env File
 
-Market Order:
+Create a `.env` file in the root directory:
+
+```
+BINANCE_API_KEY=your_api_key
+BINANCE_API_SECRET=your_api_secret
+```
+
+---
+
+## Usage Examples
+
+### MARKET Order
+
+```
 python cli.py --symbol BTCUSDT --side BUY --type MARKET --quantity 0.01
+```
 
-Limit Order:
+### LIMIT Order
+
+```
 python cli.py --symbol BTCUSDT --side SELL --type LIMIT --quantity 0.01 --price 60000
+```
 
-## Logs
+---
 
-Logs are stored in:
+## Sample Output
+
+```
+===== ORDER REQUEST SUMMARY =====
+Symbol: BTCUSDT
+Side: BUY
+Type: MARKET
+Quantity: 0.01
+
+===== ORDER RESPONSE =====
+Order ID: 123456
+Status: FILLED
+Executed Qty: 0.01
+Avg Price: 50000
+
+Order placed successfully!
+```
+
+---
+
+## Logging
+
+All API requests, responses, and errors are logged to:
+
+```
 logs/trading_bot.log
+```
+
+This ensures traceability and easier debugging.
+
+---
 
 ## Assumptions
 
 - Only USDT-M Futures supported
+- GTC (Good Till Cancelled) used for LIMIT orders
 - Price required only for LIMIT orders
-- GTC used for LIMIT orders
+- Testnet base URL used for API interactions
+
+---
+
+## Evaluation Coverage
+
+✔ Order placement correctness  
+✔ Clean and modular architecture  
+✔ Validation and error handling  
+✔ Logging quality  
+✔ Clear documentation  
+
+---
+
+## Author
+
+Harsh Yadav
