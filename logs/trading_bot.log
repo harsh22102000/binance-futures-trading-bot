@@ -1,0 +1,4 @@
+2026-02-16 18:15:00.708861 - INFO - bot.client - Placing order: {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': 0.01}
+2026-02-16 18:15:00.708873 - INFO - bot.client - Order response: {'orderId': 123456, 'status': 'FILLED', 'executedQty': '0.01', 'avgPrice': '50000'}
+2026-02-16 18:15:00.708874 - INFO - bot.client - Placing order: {'symbol': 'BTCUSDT', 'side': 'SELL', 'type': 'LIMIT', 'quantity': 0.01, 'price': 60000}
+2026-02-16 18:15:00.708875 - INFO - bot.client - Order response: {'orderId': 789012, 'status': 'NEW', 'executedQty': '0.00', 'avgPrice': '0'}
